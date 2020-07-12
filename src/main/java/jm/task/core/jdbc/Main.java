@@ -14,18 +14,20 @@ import java.util.Iterator;
 public class Main {
     public static void main(String[] args) throws SQLException {
         // реализуйте алгоритм здесь
-        UserDaoJDBCImpl u1 = new UserDaoJDBCImpl();
-        u1.createUsersTable();
-        u1.saveUser("Vasya","Pupkin",(byte)22);
-        u1.saveUser("Petr","Geter",(byte)44);
-        u1.saveUser("Ivan","Seter",(byte)33);
-        u1.saveUser("test","test",(byte)1);
-        Iterator<User> it = u1.getAllUsers().iterator();
-        while (it.hasNext()){
-            System.out.println(it.next().toString());
+        UserDaoHibernateImpl u2 = new UserDaoHibernateImpl();
+        u2.dropUsersTable();
+        u2.createUsersTable();
+        u2.saveUser("Vasya","Vasiev",(byte)23);
+        u2.saveUser("Petr","Petrov",(byte)33);
+        u2.saveUser("Ivan","Ivanov",(byte)55);
+        u2.saveUser("test","testov",(byte)4);
+        u2.removeUserById(1);
+        for (User user : u2.getAllUsers()) {
+            System.out.println(user);
         }
-        u1.cleanUsersTable();
-        u1.dropUsersTable();
+        //u2.removeUserById(1);
+        //u2.cleanUsersTable();
+
 
     }
 }

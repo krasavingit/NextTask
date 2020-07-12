@@ -47,7 +47,7 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public void saveUser(String name, String lastName, byte age) throws SQLException {
         Util.getCon().execute(
-                "INSERT INTO users (firstName, lastName, age) VALUES ('"+ name +"','"+ lastName +"','"+ age +"')");
+                "INSERT INTO users (name, lastName, age) VALUES ('"+ name +"','"+ lastName +"','"+ age +"')");
         System.out.println("User с именем " + name + " добавлен в базу данных");
     }
 
